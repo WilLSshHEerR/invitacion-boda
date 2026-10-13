@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bodas de Oro · José &amp; Noemí</title>
+  <meta name="description" content="Te invitamos a celebrar los 50 años de matrimonio de José y Noemí.">
+  <meta name="theme-color" content="#8A7132">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Vollkorn:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="cover-lock">
+
+  <!-- ============ 1. PORTADA DE SOBRE ============ -->
+  <div class="portada" id="portada">
+    <div class="sobre" id="sobre">
+      <div class="sobre-cuerpo"></div>
+      <div class="sobre-tarjeta">
+        <p class="script">Bodas de Oro</p>
+        <p class="nombres-mini">José &amp; Noemí</p>
+      </div>
+      <div class="sobre-frente"></div>
+      <div class="solapa"></div>
+      <button class="sello" id="sello" type="button" aria-label="Abrir invitación">
+        <span>J &amp; N</span>
+      </button>
+    </div>
+    <p class="portada-texto">Toca el sello para abrir</p>
+  </div>
+
+  <main id="invitacion">
+
+    <!-- ============ 2. HERO ============ -->
+    <section class="seccion hero">
+      <div class="hero-sobre">
+        <img class="deco hero-euc" src="assets/eucalipto-1.png" alt="" aria-hidden="true">
+        <div class="foto-marco" id="fotoMarco">
+          <img src="assets/pareja.jpg" alt="José y Noemí, la pareja de oro" class="foto" width="600" height="750">
+          <span class="foto-placeholder">Foto de la pareja<br><small>assets/pareja.jpg</small></span>
+        </div>
+        <span class="sello sello-hero" aria-hidden="true"><span>J &amp; N</span></span>
+      </div>
+      <div class="tarjeta hero-tarjeta reveal">
+        <img class="deco hortensia h-tl" src="assets/hortensia.png" alt="" aria-hidden="true">
+        <p class="kicker">¡50 años juntos!</p>
+        <h1 class="nombres" id="nombres">José &amp; Noemí</h1>
+        <p class="fecha-hero" id="fechaHero">SÁB | 6 DE FEBRERO 2027</p>
+        <p class="invitado" id="invitado" hidden></p>
+        <div class="musica" id="musica" hidden>
+          <button type="button" class="musica-btn" id="musicaBtn" aria-label="Reproducir música" aria-pressed="false">
+            <svg class="ondas" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 18v4M9 15v10M14 11v18M19 16v8M24 9v22M29 14v12M34 17v6M39 12v16M44 8v24M49 15v10M54 13v14M59 18v4M64 15v10M69 11v18M74 16v8M79 9v22M84 14v12M89 17v6M94 12v16M99 8v24M104 15v10M109 13v14M114 18v4"/></svg>
+            <span class="play"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="i-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. FRASE ============ -->
+    <section class="seccion">
+      <div class="bloque dorado reveal">
+        <img class="deco euc euc-izq" src="assets/eucalipto-1.png" alt="" aria-hidden="true" loading="lazy">
+        <img class="deco hortensia h-tr" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
+        <p class="frase" id="frase"></p>
+        <svg class="adorno" viewBox="0 0 200 30" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M10 15h70M120 15h70"/><path d="M100 6c-6 4-6 14 0 18 6-4 6-14 0-18z"/><path d="M88 15c4-5 8-5 12 0-4 5-8 5-12 0zM100 15c4-5 8-5 12 0-4 5-8 5-12 0z"/></g></svg>
+      </div>
+    </section>
+
+    <!-- ============ 4. PADRINOS ============ -->
+    <section class="seccion">
+      <div class="bloque dorado reveal">
+        <img class="deco euc euc-der" src="assets/eucalipto-2.png" alt="" aria-hidden="true" loading="lazy">
+        <h2 class="titulo claro">Padrinos</h2>
+        <div id="padrinos"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5. CELEBRA CON NOSOTROS ============ -->
+    <section class="seccion">
+      <div class="tarjeta reveal">
+        <img class="deco euc euc-izq" src="assets/eucalipto-1.png" alt="" aria-hidden="true" loading="lazy">
+        <img class="deco hortensia h-br" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
+        <h2 class="titulo">Celebra con nosotros</h2>
+        <div class="iconos">
+          <!-- Iglesia -->
+          <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4v10M27 8h10"/><path d="M32 14l-10 10v34h20V24z"/><path d="M22 34H8v24h14M42 34h14v24H42"/><path d="M27 58V46a5 5 0 0110 0v12"/></g></svg>
+          <!-- Copas -->
+          <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h18l-2 14a7 7 0 01-14 0z"/><path d="M19 35v18M12 54h14"/><path d="M36 14h18l-2 14a7 7 0 01-14 0z"/><path d="M45 35v18M38 54h14"/><path d="M32 4v4M24 6l1 3M40 6l-1 3"/></g></svg>
+        </div>
+        <p class="script sub">Ceremonia y recepción</p>
+        <p class="lugar" id="lugar"></p>
+        <p class="direccion" id="direccion"></p>
+        <dl class="horarios">
+          <div><dt>Ceremonia</dt><dd id="horaCeremonia"></dd></div>
+          <div><dt>Recepción</dt><dd id="horaRecepcion"></dd></div>
+        </dl>
+        <a class="btn" id="btnMapa" href="#" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+    </section>
+
+    <!-- ============ 6. CUENTA REGRESIVA ============ -->
+    <section class="seccion">
+      <div class="bloque dorado reveal">
+        <img class="deco euc euc-der" src="assets/eucalipto-2.png" alt="" aria-hidden="true" loading="lazy">
+        <h2 class="titulo claro">¡Prepárate!</h2>
+        <p class="sub-mayus">Nos vemos dentro de:</p>
+        <div class="cuenta" id="cuenta" role="timer" aria-live="off">
+          <div><b id="cdD">--</b><span>Días</span></div><i>:</i>
+          <div><b id="cdH">--</b><span>Horas</span></div><i>:</i>
+          <div><b id="cdM">--</b><span>Min</span></div><i>:</i>
+          <div><b id="cdS">--</b><span>Seg</span></div>
+        </div>
+        <p class="cuenta-fin" id="cuentaFin" hidden>¡Hoy celebramos 50 años de amor!</p>
+      </div>
+    </section>
+
+    <!-- ============ 7 y 8. CONFIRMACIÓN + BOLETOS ============ -->
+    <section class="seccion rsvp">
+      <div class="rsvp-sobre reveal">
+        <span class="sello sello-fijo" aria-hidden="true"><span>J &amp; N</span></span>
+        <div class="tarjeta rsvp-tarjeta">
+          <img class="deco hortensia h-tl" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
+          <h2 class="script grande">Esperamos contar con tu presencia</h2>
+          <p class="mayus">Favor de confirmar asistencia antes del <strong class="resalta" id="limiteRsvp">15 de enero de 2027</strong></p>
+          <p class="estado" id="estado" role="status"></p>
+          <button class="btn" id="btnConfirmar" type="button">Confirmar asistencia</button>
+          <p class="aviso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Boleto por separado para el ingreso al salón</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pie"><p class="script">Con amor, José &amp; Noemí</p></footer>
+  </main>
+
+  <!-- ============ FORMULARIO DE CONFIRMACIÓN ============ -->
+  <dialog id="modal" aria-labelledby="modalTitulo">
+    <form method="dialog" id="form" novalidate>
+      <button type="button" class="cerrar" id="cerrar" aria-label="Cerrar">×</button>
+      <h2 class="script grande" id="modalTitulo">Confirmar asistencia</h2>
+      <p class="mayus" id="modalInvitado"></p>
+      <label for="asistentes">Número de asistentes</label>
+      <select id="asistentes"></select>
+      <label for="nota">Mensaje (opcional)</label>
+      <textarea id="nota" rows="3" maxlength="300" placeholder="Escribe unas palabras para los festejados"></textarea>
+      <p class="estado" id="modalEstado" role="alert"></p>
+      <div class="acciones">
+        <button type="button" class="btn" id="btnSi">Confirmo mi asistencia</button>
+        <button type="button" class="btn btn-sec" id="btnNo">No podré asistir</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
