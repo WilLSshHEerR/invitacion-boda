@@ -260,6 +260,7 @@ const EVENTO={
   mapa:"https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+Fiesta+Dorada%2C+Av.+Cuauht%C3%A9moc%2C+V%C3%ADa+Jos%C3%A9+L%C3%B3pez+Portillo%2C+Guadalupe+Victoria%2C+55010+Ecatepec+de+Morelos%2C+M%C3%A9xico",
   whatsapp:"5210000000000"
 };
+const RSVP_URL="https://script.google.com/macros/s/AKfycbyyjNp0wg1rtRFOgCwZpf6X9iF_rYku1c2zW-b_RzCx7gL20cN6mAJl2d_z7tyVBPtH/exec";
 const FRASE="Padre Celestial, tu gracia nos unió hace 50 años y tu fidelidad nos ha dado alegrías, nos ha acompañado en la tristeza y en los momentos difíciles, y ha mantenido encendida la luz y la llama de nuestro amor. Somos la pareja de oro. Gracias a ti, Dios Padre.";
 const PADRINOS=[
   {t:"Padrinos de Arras",n:["Arteh Gama Fuentes"]},
@@ -272,7 +273,6 @@ const BOLETOS={DEMO1:{name:"Familia Pérez",passes:4},DEMO2:{name:"Sra. María L
 /* ===== LÓGICA ===== */
 const $=s=>document.querySelector(s);
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
 $("#frase").textContent=FRASE;
 $("#lugar").textContent=EVENTO.lugar;$("#dir").textContent=EVENTO.direccion;
@@ -316,18 +316,15 @@ function tick(){
 const id=(new URLSearchParams(location.search).get("boleto")||"").toUpperCase();
 const inv=BOLETOS[id]||null;
 if(inv){$("#invitado").hidden=false;$("#invNombre").textContent=inv.name}
-const key="rsvp:"+(id||"general");
-function pintarEstado(){
-  const v=store.get(key);if(!v)return;
-  const r=JSON.parse(v);const e=$("#estado");e.className="estado ok";
-  e.textContent=r.va?`¡Gracias! Registramos ${r.n} asistente${r.n>1?"s":""}.`:"Gracias por avisarnos. Te echaremos de menos.";
-  $("#btnConf").textContent="Modificar respuesta";
-}
-pintarEstado();
 
 // Modal
 const modal=$("#modal");
 $("#btnConf").addEventListener("click",()=>{
+  if(!id){
+    const estado=$("#estado");estado.className="estado err";
+    estado.textContent="Para confirmar, abre la invitación con el código personal incluido en tu enlace.";
+    return;
+  }
   const max=inv?inv.passes:6;const sel=$("#asis");sel.innerHTML="";
   for(let i=1;i<=max;i++){const o=document.createElement("option");o.value=i;o.textContent=i+(i>1?" personas":" persona");sel.appendChild(o)}
   $("#mInv").textContent=inv?inv.name+" · "+inv.passes+(inv.passes>1?" pases":" pase"):"";
@@ -335,13 +332,33 @@ $("#btnConf").addEventListener("click",()=>{
 });
 $("#cerrar").addEventListener("click",()=>modal.close());
 modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});
-function enviar(va){
+async function enviar(va){
+  if(!id){
+    $("#mEstado").className="estado err";
+    $("#mEstado").textContent="No encontramos el código de invitación en este enlace.";
+    return;
+  }
   const n=va?+$("#asis").value:0,nota=$("#nota").value.trim();
-  store.set(key,JSON.stringify({va,n}));
-  const txt=`${inv?inv.name+": ":""}${va?`Confirmo asistencia de ${n} persona(s).`:"No podré asistir."} ${nota}`.trim();
-  $("#mEstado").className="estado ok";$("#mEstado").textContent="¡Respuesta registrada!";
-  pintarEstado();
-  setTimeout(()=>{modal.close();window.open(`https://wa.me/${EVENTO.whatsapp}?text=${encodeURIComponent(txt)}`,"_blank","noopener")},700);
+  const botones=[$("#si"),$("#no"),$("#cerrar")];
+  botones.forEach(b=>b.disabled=true);
+  $("#mEstado").className="estado";
+  $("#mEstado").textContent="Enviando respuesta…";
+  try{
+    await fetch(RSVP_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({codigo:id,asiste:va,asistentes:n,mensaje:nota})
+    });
+    $("#mEstado").className="estado";
+    $("#mEstado").textContent="Solicitud enviada. No podemos verificar desde aquí si quedó registrada; si tienes dudas, contacta a los anfitriones.";
+  }catch(error){
+    console.error("No se pudo enviar la confirmación.",error);
+    $("#mEstado").className="estado err";
+    $("#mEstado").textContent="No se pudo enviar la respuesta. Revisa tu conexión e inténtalo de nuevo.";
+  }finally{
+    botones.forEach(b=>b.disabled=false);
+  }
 }
 $("#si").addEventListener("click",()=>enviar(true));
 $("#no").addEventListener("click",()=>enviar(false));
