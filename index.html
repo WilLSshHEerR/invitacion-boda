@@ -1,158 +1,350 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Bodas de Oro · José &amp; Noemí</title>
-  <meta name="description" content="Te invitamos a celebrar los 50 años de matrimonio de José y Noemí.">
-  <meta name="theme-color" content="#8A7132">
-  <meta name="robots" content="noindex">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Vollkorn:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add('js');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bodas de Oro · José &amp; Noemí</title>
+<meta name="description" content="Te invitamos a celebrar los 50 años de matrimonio de José y Noemí.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6ee;--card:#fffdf8;--ink:#3a3226;--soft:#7a6f5e;--gold:#a98a3d;--gold2:#d8bf7a;--deep:#2b2417;--line:rgba(169,138,61,.35);
+  --serif:'Cormorant Garamond',Georgia,serif;--script:'Pinyon Script','Snell Roundhand',cursive;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1200px 600px at 50% -10%,rgba(216,191,122,.22),transparent 60%),url(assets/textura.png);background-size:auto,420px}
+body{overflow-x:hidden}
+body.lock{overflow:hidden}
+h1,h2,h3,p{margin:0}
+.script{font-family:var(--script);font-weight:400;color:var(--gold)}
+.eyebrow{font-size:.78rem;letter-spacing:.38em;text-transform:uppercase;color:var(--soft)}
+.gold-text{background:linear-gradient(100deg,#8a6d27,#d8bf7a 45%,#a98a3d 70%,#e7d49a);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- PORTADA ---------- */
+.portada{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fffaf0,#efe1bd);transition:opacity 1s ease,visibility 1s;padding:24px}
+.portada.fuera{opacity:0;visibility:hidden}
+.sobre{position:relative;width:min(88vw,420px);aspect-ratio:1.42;perspective:1200px;filter:drop-shadow(0 26px 40px rgba(90,70,20,.35))}
+.s-cuerpo,.s-frente{position:absolute;inset:0;border-radius:4px}
+.s-cuerpo{z-index:0;background:linear-gradient(145deg,#fffefa,#f7f0df);border:1px solid rgba(169,138,61,.65)}
+.s-cuerpo::after{content:"";position:absolute;inset:8px;border:1px solid rgba(169,138,61,.28);pointer-events:none}
+.s-tarjeta{position:absolute;left:7%;right:7%;top:8%;bottom:6%;z-index:1;background:var(--card) url(assets/textura.png) center/420px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform 1.1s .5s cubic-bezier(.2,.7,.2,1),z-index 0s .9s;color:#3a3226}
+.s-tarjeta .script{font-size:2.6rem;line-height:1}
+.s-tarjeta small{letter-spacing:.35em;text-transform:uppercase;font-size:.7rem;color:#7a6f5e}
+.s-frente{z-index:2;background:linear-gradient(135deg,#fffdf8 0 50%,transparent 50%),linear-gradient(225deg,#f8f3e8 0 50%,transparent 50%),linear-gradient(0deg,#f5efdf 0 55%,transparent 55%);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+.s-frente::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#f8f3e8 0 52%,transparent 52%);clip-path:polygon(0 100%,50% 40%,100% 100%)}
+.solapa{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(155deg,#fffefa 5%,#f7f0df 100%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s cubic-bezier(.5,0,.2,1);z-index:3;border-radius:4px 4px 0 0}
+.sello{position:absolute;left:50%;top:50%;z-index:4;width:74px;height:74px;margin:-37px 0 0 -37px;border:0;cursor:pointer;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 6px 7px rgba(0,0,0,.32));transition:transform .3s,opacity .5s}
+.sello:hover{transform:scale(1.06)}
+.sello:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.sobre.abierto .solapa{transform:rotateX(180deg);z-index:0}
+.sobre.abierto .sello{opacity:0;pointer-events:none}
+.sobre.abierto .s-tarjeta{z-index:3;transform:translateY(-34%) scale(1.04)}
+.p-texto{position:absolute;bottom:calc(36px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#8a6d27;letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;animation:pulso 2.4s infinite}
+@keyframes pulso{50%{opacity:.35}}
+
+/* ---------- LAYOUT ---------- */
+main{max-width:560px;margin:0 auto;padding:0 18px 40px}
+section{padding:34px 0;text-align:center}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+.js-off .reveal{opacity:1;transform:none}
+.card{position:relative;background:var(--card);padding:44px 28px;border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-10px;box-shadow:0 18px 40px -22px rgba(60,45,10,.35)}
+.dark{background:linear-gradient(160deg,#fbf3dd,#f1e4c0)}
+.card{overflow:hidden}
+.orn{display:block;width:150px;height:24px;margin:18px auto;color:var(--gold)}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:52px;position:relative}
+.marco{position:relative;width:min(78%,330px);margin:0 auto 6px;aspect-ratio:4/5;border-radius:999px 999px 6px 6px;padding:10px;border:1px solid var(--gold2)}
+.marco-in{width:100%;height:100%;border-radius:999px 999px 2px 2px;overflow:hidden;background:linear-gradient(160deg,#eadcb6,#c9ad63);display:grid;place-items:center;text-align:center;color:#fff8e2;font-size:.9rem;letter-spacing:.08em}
+.marco-in img{width:100%;height:100%;object-fit:cover}
+.marco-in img.img-falta{display:none}
+.recuerdos{padding-top:10px}
+.recuerdos .titulo{margin-bottom:18px}
+.recuerdos-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:0 auto}
+.recuerdos-grid figure{margin:0;padding:5px;border:1px solid var(--line);background:var(--card);box-shadow:0 12px 28px -18px rgba(60,45,10,.5)}
+.recuerdos-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.mono{position:relative;z-index:2;width:62px;height:62px;margin:-31px auto 0;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 5px 6px rgba(80,60,10,.35))}
+.hero h1{font-family:var(--script);font-weight:400;font-size:clamp(3.4rem,15vw,5rem);line-height:1.15;margin:28px 0 6px}
+.fecha{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:10px;letter-spacing:.3em;text-transform:uppercase;font-size:.85rem}
+.fecha b{font-size:2.6rem;font-weight:500;letter-spacing:0;line-height:1;color:var(--gold)}
+.fecha span{padding:0 4px;border-inline:1px solid var(--line);padding-inline:18px;line-height:1.5}
+.invitado{margin-top:22px;font-style:italic;color:var(--soft)}
+.invitado b{display:block;font-style:normal;font-weight:600;font-size:1.35rem;color:var(--ink);letter-spacing:.04em}
+
+/* ---------- SECCIONES ---------- */
+.titulo{font-family:var(--script);font-size:clamp(2.6rem,10vw,3.4rem);font-weight:400;line-height:1.1;margin-bottom:10px;color:var(--gold)}
+.frase{font-size:1.3rem;font-style:italic;line-height:1.75}
+.frase::before{content:"“";display:block;font:4rem/0.6 var(--serif);color:#d8bf7a;margin-bottom:10px}
+.grupo{margin-top:22px}
+.grupo h3{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px}
+.grupo p{font-size:1.2rem}
+.lugar{font-size:1.5rem;font-weight:600;margin-top:12px}
+.dir{color:var(--soft);margin-top:2px}
+.vestimenta-tipo{font-size:1.8rem;font-weight:600;color:var(--gold);margin:10px 0}
+.vestimenta-nota{max-width:380px;margin:0 auto;color:var(--soft)}
+.horarios{display:grid;grid-template-columns:1fr 1fr;margin:26px 0 28px;border-block:1px solid var(--line)}
+.horarios div{padding:16px 6px;text-align:center}
+.horarios.una-hora{grid-template-columns:1fr}
+.horarios.una-hora div+div{border-left:0}
+.horarios div+div{border-left:1px solid var(--line)}
+.horarios dt{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft)}
+.horarios dd{margin:4px 0 0;font-size:1.5rem;font-weight:500;color:var(--gold)}
+.evento .card>*{opacity:0;transform:translateY(12px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.evento.visible .card>*{opacity:1;transform:translateY(0)}
+.evento.visible .card>*:nth-child(2){transition-delay:.08s}
+.evento.visible .card>*:nth-child(3){transition-delay:.16s}
+.evento.visible .card>*:nth-child(4){transition-delay:.24s}
+.evento.visible .card>*:nth-child(5){transition-delay:.32s}
+.evento.visible .card>*:nth-child(6){transition-delay:.4s}
+.evento.visible .card>*:nth-child(7){transition-delay:.48s}
+.icons{display:flex;justify-content:center;gap:26px;color:var(--gold);margin-bottom:6px}
+.icons svg{width:54px;height:54px}
+.btn{display:inline-block;cursor:pointer;font:600 .8rem var(--serif);letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:#fffaf0;background:linear-gradient(135deg,#8a6d27,#b99a4a 50%,#8a6d27);border:0;padding:15px 30px;border-radius:2px;box-shadow:0 8px 18px -8px rgba(110,85,25,.7);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn.sec{background:transparent;color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.cuenta{display:flex;justify-content:center;gap:clamp(8px,3vw,18px);margin-top:22px}
+.cuenta div{min-width:68px;padding:14px 4px 10px;border:1px solid var(--line);background:rgba(255,253,248,.7)}
+.cuenta b{display:block;font:500 2.4rem/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums}
+.cuenta span{font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:var(--soft)}
+.rsvp-note{margin:14px auto 24px;max-width:340px}
+.rsvp-note strong{color:var(--gold);font-weight:600}
+.aviso{margin-top:22px;font-size:.92rem;color:var(--soft);font-style:italic}
+.estado{min-height:1.5em;margin:12px 0 0;font-style:italic;color:var(--soft)}
+.estado.ok{color:#5d7a3a}.estado.err{color:#a4472f}
+.pie{text-align:center;padding:30px 0 10px}
+.pie .script{font-size:2.2rem}
+
+/* ---------- MODAL ---------- */
+dialog{width:min(92vw,440px);border:1px solid var(--gold2);padding:0;background:var(--card);color:var(--ink);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(20,15,5,.6);backdrop-filter:blur(3px)}
+form{padding:34px 26px 28px;text-align:center;position:relative}
+form h2{font-family:var(--script);font-weight:400;font-size:2.6rem;color:var(--gold)}
+label{display:block;text-align:left;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);margin:18px 0 6px}
+select,textarea{width:100%;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);padding:11px 12px;border-radius:2px}
+select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.acciones{display:grid;gap:10px;margin-top:20px}
+.x{position:absolute;right:10px;top:6px;border:0;background:none;font-size:2rem;color:var(--soft);cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.reveal,.evento .card>*{opacity:1;transform:none}}
+</style>
 </head>
-<body class="cover-lock">
+<body class="lock">
 
-  <!-- ============ 1. PORTADA DE SOBRE ============ -->
-  <div class="portada" id="portada">
-    <div class="sobre" id="sobre">
-      <div class="sobre-cuerpo"></div>
-      <div class="sobre-tarjeta">
-        <p class="script">Bodas de Oro</p>
-        <p class="nombres-mini">José &amp; Noemí</p>
-      </div>
-      <div class="sobre-frente"></div>
-      <div class="solapa"></div>
-      <button class="sello" id="sello" type="button" aria-label="Abrir invitación">
-        <span>J &amp; N</span>
-      </button>
-    </div>
-    <p class="portada-texto">Toca el sello para abrir</p>
+<!-- PORTADA -->
+<div class="portada" id="portada">
+  <div class="sobre" id="sobre">
+    <div class="s-cuerpo"></div>
+    <div class="s-tarjeta"><p class="script">Bodas de Oro</p><small>José &amp; Noemí</small></div>
+    <div class="s-frente"></div>
+    <div class="solapa"></div>
+    <button class="sello" id="sello" type="button" aria-label="Abrir invitación"></button>
   </div>
+  <p class="p-texto">Toca el sello para abrir</p>
+</div>
 
-  <main id="invitacion">
+<main id="inv">
 
-    <!-- ============ 2. HERO ============ -->
-    <section class="seccion hero">
-      <div class="hero-sobre">
-        <img class="deco hero-euc" src="assets/eucalipto-1.png" alt="" aria-hidden="true">
-        <div class="foto-marco" id="fotoMarco">
-          <img src="assets/pareja.jpg" alt="José y Noemí, la pareja de oro" class="foto" width="600" height="750">
-          <span class="foto-placeholder">Foto de la pareja<br><small>assets/pareja.jpg</small></span>
-        </div>
-        <span class="sello sello-hero" aria-hidden="true"><span>J &amp; N</span></span>
+  <!-- HERO -->
+  <section class="hero reveal">
+    <div class="marco"><div class="marco-in"><img src="assets/pareja_3.jpeg" alt="José y Noemí juntos al atardecer" id="foto"><span id="fotoTxt">Foto de la pareja</span></div></div>
+    <div class="mono" aria-hidden="true"></div>
+    <p class="eyebrow" style="margin-top:26px">Cincuenta años juntos</p>
+    <h1 class="gold-text">José &amp; Noemí</h1>
+    <div class="fecha"><span>Sábado</span><b>06</b><span>Febrero<br>2027</span></div>
+    <p class="invitado" id="invitado" hidden>Invitación para<b id="invNombre"></b></p>
+  </section>
+
+  <!-- RECUERDOS -->
+  <section class="recuerdos reveal">
+    <h2 class="titulo">Una vida juntos</h2>
+    <div class="recuerdos-grid">
+      <figure><img src="assets/pareja_1.jpeg" alt="José y Noemí abrazados en un campo al atardecer" loading="lazy"></figure>
+      <figure><img src="assets/pareja_2.jpeg" alt="José y Noemí abrazados frente al mar al atardecer" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- FRASE -->
+  <section class="reveal">
+    <div class="card dark">
+      <p class="frase" id="frase"></p>
+      <svg class="orn" viewBox="0 0 200 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M8 12h72M120 12h72"/><path d="M100 3c-6 4-6 14 0 18 6-4 6-14 0-18z"/><path d="M88 12c4-5 8-5 12 0-4 5-8 5-12 0zM100 12c4-5 8-5 12 0-4 5-8 5-12 0z"/></g></svg>
+      <div id="padrinos"></div>
+    </div>
+  </section>
+
+  <!-- LUGAR -->
+  <section class="reveal evento">
+    <div class="card">
+      <div class="icons">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4v10M27 8h10M32 14l-10 10v34h20V24zM22 34H8v24h14M42 34h14v24H42M27 58V46a5 5 0 0110 0v12"/></g></svg>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h18l-2 14a7 7 0 01-14 0zM19 35v18M12 54h14M36 14h18l-2 14a7 7 0 01-14 0zM45 35v18M38 54h14M32 4v4M24 6l1 3M40 6l-1 3"/></g></svg>
       </div>
-      <div class="tarjeta hero-tarjeta reveal">
-        <img class="deco hortensia h-tl" src="assets/hortensia.png" alt="" aria-hidden="true">
-        <p class="kicker">¡50 años juntos!</p>
-        <h1 class="nombres" id="nombres">José &amp; Noemí</h1>
-        <p class="fecha-hero" id="fechaHero">SÁB | 6 DE FEBRERO 2027</p>
-        <p class="invitado" id="invitado" hidden></p>
-        <div class="musica" id="musica" hidden>
-          <button type="button" class="musica-btn" id="musicaBtn" aria-label="Reproducir música" aria-pressed="false">
-            <svg class="ondas" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 18v4M9 15v10M14 11v18M19 16v8M24 9v22M29 14v12M34 17v6M39 12v16M44 8v24M49 15v10M54 13v14M59 18v4M64 15v10M69 11v18M74 16v8M79 9v22M84 14v12M89 17v6M94 12v16M99 8v24M104 15v10M109 13v14M114 18v4"/></svg>
-            <span class="play"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="i-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg></span>
-          </button>
-        </div>
+      <h2 class="titulo">Celebra con nosotros</h2>
+      <p class="eyebrow">Ceremonia y recepción</p>
+      <p class="lugar" id="lugar"></p>
+      <p class="dir" id="dir"></p>
+      <dl class="horarios" id="horarios">
+        <div><dt>Ceremonia</dt><dd id="hCer"></dd></div>
+        <div id="horarioRec"><dt>Recepción</dt><dd id="hRec"></dd></div>
+      </dl>
+      <a class="btn" id="mapa" href="https://maps.app.goo.gl/8aqEUH2CDUbLc8p76" target="_blank" rel="noopener">Ver ubicación</a>
+    </div>
+  </section>
+
+  <!-- CÓDIGO DE VESTIMENTA -->
+  <section class="reveal">
+    <div class="card">
+      <p class="eyebrow">Importante</p>
+      <h2 class="titulo">Código de vestimenta</h2>
+      <p class="vestimenta-tipo">Formal</p>
+      <p class="vestimenta-nota">Para mantener la armonía de nuestra celebración, agradecemos evitar los tonos gris y azul marino.</p>
+    </div>
+  </section>
+
+  <!-- CUENTA -->
+  <section class="reveal">
+    <div class="card dark">
+      <h2 class="titulo">¡Prepárate!</h2>
+      <p class="eyebrow">Nos vemos dentro de</p>
+      <div class="cuenta" id="cuenta" role="timer" aria-live="off">
+        <div><b id="cD">--</b><span>Días</span></div><div><b id="cH">--</b><span>Hrs</span></div><div><b id="cM">--</b><span>Min</span></div><div><b id="cS">--</b><span>Seg</span></div>
       </div>
-    </section>
+      <p class="frase" id="cFin" hidden style="margin-top:20px">¡Hoy celebramos 50 años de amor!</p>
+    </div>
+  </section>
 
-    <!-- ============ 3. FRASE ============ -->
-    <section class="seccion">
-      <div class="bloque dorado reveal">
-        <img class="deco euc euc-izq" src="assets/eucalipto-1.png" alt="" aria-hidden="true" loading="lazy">
-        <img class="deco hortensia h-tr" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
-        <p class="frase" id="frase"></p>
-        <svg class="adorno" viewBox="0 0 200 30" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M10 15h70M120 15h70"/><path d="M100 6c-6 4-6 14 0 18 6-4 6-14 0-18z"/><path d="M88 15c4-5 8-5 12 0-4 5-8 5-12 0zM100 15c4-5 8-5 12 0-4 5-8 5-12 0z"/></g></svg>
-      </div>
-    </section>
+  <!-- RSVP -->
+  <section class="reveal">
+    <div class="card">
+      <h2 class="titulo">Esperamos contar con tu presencia</h2>
+      <p class="rsvp-note">Favor de confirmar tu asistencia antes del <strong id="limite"></strong></p>
+      <p class="estado" id="estado" role="status"></p>
+      <button class="btn" id="btnConf" type="button">Confirmar asistencia</button>
+      <p class="aviso">Se requiere boleto por separado para el ingreso al salón.</p>
+    </div>
+  </section>
 
-    <!-- ============ 4. PADRINOS ============ -->
-    <section class="seccion">
-      <div class="bloque dorado reveal">
-        <img class="deco euc euc-der" src="assets/eucalipto-2.png" alt="" aria-hidden="true" loading="lazy">
-        <h2 class="titulo claro">Padrinos</h2>
-        <div id="padrinos"></div>
-      </div>
-    </section>
+  <footer class="pie"><p class="script">Con amor, José &amp; Noemí</p></footer>
+</main>
 
-    <!-- ============ 5. CELEBRA CON NOSOTROS ============ -->
-    <section class="seccion">
-      <div class="tarjeta reveal">
-        <img class="deco euc euc-izq" src="assets/eucalipto-1.png" alt="" aria-hidden="true" loading="lazy">
-        <img class="deco hortensia h-br" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
-        <h2 class="titulo">Celebra con nosotros</h2>
-        <div class="iconos">
-          <!-- Iglesia -->
-          <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4v10M27 8h10"/><path d="M32 14l-10 10v34h20V24z"/><path d="M22 34H8v24h14M42 34h14v24H42"/><path d="M27 58V46a5 5 0 0110 0v12"/></g></svg>
-          <!-- Copas -->
-          <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h18l-2 14a7 7 0 01-14 0z"/><path d="M19 35v18M12 54h14"/><path d="M36 14h18l-2 14a7 7 0 01-14 0z"/><path d="M45 35v18M38 54h14"/><path d="M32 4v4M24 6l1 3M40 6l-1 3"/></g></svg>
-        </div>
-        <p class="script sub">Ceremonia y recepción</p>
-        <p class="lugar" id="lugar"></p>
-        <p class="direccion" id="direccion"></p>
-        <dl class="horarios">
-          <div><dt>Ceremonia</dt><dd id="horaCeremonia"></dd></div>
-          <div><dt>Recepción</dt><dd id="horaRecepcion"></dd></div>
-        </dl>
-        <a class="btn" id="btnMapa" href="#" target="_blank" rel="noopener">Ver ubicación</a>
-      </div>
-    </section>
+<dialog id="modal" aria-labelledby="mT">
+  <form method="dialog" id="form" novalidate>
+    <button type="button" class="x" id="cerrar" aria-label="Cerrar">×</button>
+    <h2 id="mT">Confirmar asistencia</h2>
+    <p class="eyebrow" id="mInv"></p>
+    <label for="asis">Número de asistentes</label>
+    <select id="asis"></select>
+    <label for="nota">Mensaje (opcional)</label>
+    <textarea id="nota" rows="3" maxlength="300" placeholder="Unas palabras para los festejados"></textarea>
+    <p class="estado" id="mEstado" role="alert"></p>
+    <div class="acciones">
+      <button type="button" class="btn" id="si">Confirmo mi asistencia</button>
+      <button type="button" class="btn sec" id="no">No podré asistir</button>
+    </div>
+  </form>
+</dialog>
 
-    <!-- ============ 6. CUENTA REGRESIVA ============ -->
-    <section class="seccion">
-      <div class="bloque dorado reveal">
-        <img class="deco euc euc-der" src="assets/eucalipto-2.png" alt="" aria-hidden="true" loading="lazy">
-        <h2 class="titulo claro">¡Prepárate!</h2>
-        <p class="sub-mayus">Nos vemos dentro de:</p>
-        <div class="cuenta" id="cuenta" role="timer" aria-live="off">
-          <div><b id="cdD">--</b><span>Días</span></div><i>:</i>
-          <div><b id="cdH">--</b><span>Horas</span></div><i>:</i>
-          <div><b id="cdM">--</b><span>Min</span></div><i>:</i>
-          <div><b id="cdS">--</b><span>Seg</span></div>
-        </div>
-        <p class="cuenta-fin" id="cuentaFin" hidden>¡Hoy celebramos 50 años de amor!</p>
-      </div>
-    </section>
+<script>
+/* ===== CONFIGURACIÓN (edita aquí) ===== */
+const EVENTO={
+  fecha:"2027-02-06",hora:"12:00",zona:"-06:00",limite:"15 de enero de 2027",
+  lugar:"Salón Fiesta Dorada",direccion:"Av. Cuauhtémoc esq. Vía José López Portillo, Col. Guadalupe Victoria, 55010 Ecatepec de Morelos, Méx.",
+  hCer:"19:00",hRec:"20:00",
+  mapa:"https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+Fiesta+Dorada%2C+Av.+Cuauht%C3%A9moc%2C+V%C3%ADa+Jos%C3%A9+L%C3%B3pez+Portillo%2C+Guadalupe+Victoria%2C+55010+Ecatepec+de+Morelos%2C+M%C3%A9xico",
+  whatsapp:"5210000000000"
+};
+const FRASE="Padre Celestial, tu gracia nos unió hace 50 años y tu fidelidad nos ha dado alegrías, nos ha acompañado en la tristeza y en los momentos difíciles, y ha mantenido encendida la luz y la llama de nuestro amor. Somos la pareja de oro. Gracias a ti, Dios Padre.";
+const PADRINOS=[
+  {t:"Padrinos de Arras",n:["Arteh Gama Fuentes"]},
+  {t:"Padrinos de Lazo",n:["Javier Gama Fuentes","Esaú Gama Fuentes","Brenda [apellido]"]},
+  {t:"Padrinos de Anillos",n:["César Gama Martínez","[segundo nombre]"]}
+];
+// Demo local: abre con ?boleto=DEMO1 (en producción esto vendría de Firebase)
+const BOLETOS={DEMO1:{name:"Familia Pérez",passes:4},DEMO2:{name:"Sra. María López",passes:2}};
 
-    <!-- ============ 7 y 8. CONFIRMACIÓN + BOLETOS ============ -->
-    <section class="seccion rsvp">
-      <div class="rsvp-sobre reveal">
-        <span class="sello sello-fijo" aria-hidden="true"><span>J &amp; N</span></span>
-        <div class="tarjeta rsvp-tarjeta">
-          <img class="deco hortensia h-tl" src="assets/hortensia.png" alt="" aria-hidden="true" loading="lazy">
-          <h2 class="script grande">Esperamos contar con tu presencia</h2>
-          <p class="mayus">Favor de confirmar asistencia antes del <strong class="resalta" id="limiteRsvp">15 de enero de 2027</strong></p>
-          <p class="estado" id="estado" role="status"></p>
-          <button class="btn" id="btnConfirmar" type="button">Confirmar asistencia</button>
-          <p class="aviso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Boleto por separado para el ingreso al salón</p>
-        </div>
-      </div>
-    </section>
+/* ===== LÓGICA ===== */
+const $=s=>document.querySelector(s);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
-    <footer class="pie"><p class="script">Con amor, José &amp; Noemí</p></footer>
-  </main>
+$("#frase").textContent=FRASE;
+$("#lugar").textContent=EVENTO.lugar;$("#dir").textContent=EVENTO.direccion;
+$("#hCer").textContent=EVENTO.hCer;
+if(EVENTO.hRec){$("#hRec").textContent=EVENTO.hRec}else{$("#horarioRec").hidden=true;$("#horarios").classList.add("una-hora")}
+$("#mapa").href=EVENTO.mapa;$("#limite").textContent=EVENTO.limite;
+PADRINOS.forEach(g=>{
+  const d=document.createElement("div");d.className="grupo";
+  const h=document.createElement("h3");h.textContent=g.t;d.appendChild(h);
+  g.n.forEach(x=>{const p=document.createElement("p");p.textContent=x;d.appendChild(p)});
+  $("#padrinos").appendChild(d);
+});
+$("#foto").addEventListener("error",e=>e.target.classList.add("img-falta"));
+$("#foto").addEventListener("load",()=>$("#fotoTxt").hidden=true);
 
-  <!-- ============ FORMULARIO DE CONFIRMACIÓN ============ -->
-  <dialog id="modal" aria-labelledby="modalTitulo">
-    <form method="dialog" id="form" novalidate>
-      <button type="button" class="cerrar" id="cerrar" aria-label="Cerrar">×</button>
-      <h2 class="script grande" id="modalTitulo">Confirmar asistencia</h2>
-      <p class="mayus" id="modalInvitado"></p>
-      <label for="asistentes">Número de asistentes</label>
-      <select id="asistentes"></select>
-      <label for="nota">Mensaje (opcional)</label>
-      <textarea id="nota" rows="3" maxlength="300" placeholder="Escribe unas palabras para los festejados"></textarea>
-      <p class="estado" id="modalEstado" role="alert"></p>
-      <div class="acciones">
-        <button type="button" class="btn" id="btnSi">Confirmo mi asistencia</button>
-        <button type="button" class="btn btn-sec" id="btnNo">No podré asistir</button>
-      </div>
-    </form>
-  </dialog>
+// Portada
+$("#sello").addEventListener("click",()=>{
+  const s=$("#sobre"),p=$("#portada");s.classList.add("abierto");
+  setTimeout(()=>{p.classList.add("fuera");document.body.classList.remove("lock");scrollTo(0,0);setTimeout(()=>p.remove(),1100)},reduce?50:3000);
+});
 
-  <script src="app.js"></script>
+// Reveal
+const els=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target)}}),{threshold:.12});
+  els.forEach(e=>o.observe(e));
+}else els.forEach(e=>e.classList.add("visible"));
+
+// Cuenta regresiva
+const destino=new Date(`${EVENTO.fecha}T${EVENTO.hora}:00${EVENTO.zona}`).getTime();
+const pad=n=>String(n).padStart(2,"0");
+const timer=setInterval(tick,1000);tick();
+function tick(){
+  let r=Math.max(0,destino-Date.now());
+  const d=Math.floor(r/864e5);r-=d*864e5;const h=Math.floor(r/36e5);r-=h*36e5;const m=Math.floor(r/6e4);r-=m*6e4;
+  $("#cD").textContent=pad(d);$("#cH").textContent=pad(h);$("#cM").textContent=pad(m);$("#cS").textContent=pad(Math.floor(r/1e3));
+  if(destino<=Date.now()){$("#cuenta").hidden=true;$("#cFin").hidden=false;clearInterval(timer)}
+}
+
+// Invitado / boleto
+const id=(new URLSearchParams(location.search).get("boleto")||"").toUpperCase();
+const inv=BOLETOS[id]||null;
+if(inv){$("#invitado").hidden=false;$("#invNombre").textContent=inv.name}
+const key="rsvp:"+(id||"general");
+function pintarEstado(){
+  const v=store.get(key);if(!v)return;
+  const r=JSON.parse(v);const e=$("#estado");e.className="estado ok";
+  e.textContent=r.va?`¡Gracias! Registramos ${r.n} asistente${r.n>1?"s":""}.`:"Gracias por avisarnos. Te echaremos de menos.";
+  $("#btnConf").textContent="Modificar respuesta";
+}
+pintarEstado();
+
+// Modal
+const modal=$("#modal");
+$("#btnConf").addEventListener("click",()=>{
+  const max=inv?inv.passes:6;const sel=$("#asis");sel.innerHTML="";
+  for(let i=1;i<=max;i++){const o=document.createElement("option");o.value=i;o.textContent=i+(i>1?" personas":" persona");sel.appendChild(o)}
+  $("#mInv").textContent=inv?inv.name+" · "+inv.passes+(inv.passes>1?" pases":" pase"):"";
+  $("#mEstado").textContent="";modal.showModal();
+});
+$("#cerrar").addEventListener("click",()=>modal.close());
+modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});
+function enviar(va){
+  const n=va?+$("#asis").value:0,nota=$("#nota").value.trim();
+  store.set(key,JSON.stringify({va,n}));
+  const txt=`${inv?inv.name+": ":""}${va?`Confirmo asistencia de ${n} persona(s).`:"No podré asistir."} ${nota}`.trim();
+  $("#mEstado").className="estado ok";$("#mEstado").textContent="¡Respuesta registrada!";
+  pintarEstado();
+  setTimeout(()=>{modal.close();window.open(`https://wa.me/${EVENTO.whatsapp}?text=${encodeURIComponent(txt)}`,"_blank","noopener")},700);
+}
+$("#si").addEventListener("click",()=>enviar(true));
+$("#no").addEventListener("click",()=>enviar(false));
+</script>
 </body>
 </html>
