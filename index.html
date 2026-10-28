@@ -68,6 +68,10 @@ section{padding:34px 0;text-align:center}
 /* ---------- HERO ---------- */
 .hero{padding-top:52px;position:relative}
 .hero .eyebrow{font-size:1rem}
+.anniversary-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:36px auto 12px;padding:14px 42px;border-radius:999px;background:linear-gradient(135deg,#fff6d8 0%,#f1d582 25%,#c89c40 52%,#f8ebbf 100%);border:1px solid rgba(113,83,24,.45);box-shadow:0 16px 26px -18px rgba(72,54,14,.85),inset 0 2px 0 rgba(255,255,255,.7);transform:rotate(-2deg);overflow:hidden}
+.anniversary-badge::before,.anniversary-badge::after{content:"✦";position:absolute;top:50%;transform:translateY(-50%);font-size:1.45rem;color:rgba(85,61,7,.7)}
+.anniversary-badge::before{left:16px}.anniversary-badge::after{right:16px}
+.anniversary-badge span{display:block;padding:0 10px;font-size:1.05rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;color:#3d2e13;text-shadow:0 1px 0 rgba(255,255,255,.52)}
 .marco{position:relative;width:min(78%,330px);margin:0 auto 6px;aspect-ratio:4/5;border-radius:999px 999px 6px 6px;padding:10px;border:1px solid var(--gold2);box-shadow:0 0 0 7px rgba(255,253,248,.62),0 18px 42px -24px rgba(80,60,10,.5)}
 .marco::before{content:"";position:absolute;inset:-7px;border:1px solid rgba(216,191,122,.45);border-radius:inherit;pointer-events:none;animation:halo-dorado 5s ease-in-out infinite}
 .marco-in{width:100%;height:100%;border-radius:999px 999px 2px 2px;overflow:hidden;background:linear-gradient(160deg,#eadcb6,#c9ad63);display:grid;place-items:center;text-align:center;color:#fff8e2;font-size:.9rem;letter-spacing:.08em}
@@ -194,9 +198,9 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 
   <!-- HERO -->
   <section class="hero reveal">
-    <div class="marco"><div class="marco-in"><img src="assets/pareja_3.jpeg" alt="José y Noemí sentados juntos en un campo de flores al atardecer" id="foto"></div></div>
+    <div class="marco"><div class="marco-in"><img src="assets/pareja_1.jpeg" alt="José y Noemí sentados juntos en un campo de flores al atardecer" id="foto"></div></div>
     <div class="mono" aria-hidden="true"></div>
-    <p class="eyebrow" style="margin-top:50px">50 aniversario</p>
+    <div class="anniversary-badge" aria-label="50 aniversario"><span>50 aniversario</span></div>
     <h1 class="gold-text">José &amp; Noemí</h1>
     <p class="invitado" id="invitado" hidden>Invitación para<b id="invNombre"></b></p>
   </section>
@@ -294,14 +298,10 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
     </div>
   </section>
 
-  <!-- RSVP -->
   <section class="reveal">
     <div class="card">
       <h2 class="titulo">Esperamos contar con tu presencia</h2>
-      <p class="rsvp-note">Favor de confirmar tu asistencia antes del <strong id="limite"></strong></p>
-      <p class="estado" id="estado" role="status"></p>
-      <button class="btn" id="btnConf" type="button">Confirmar asistencia</button>
-      <p class="aviso">Se requiere boleto por separado para el ingreso al salón.</p>
+      <p class="rsvp-note">Gracias por acompañarnos en este momento tan especial de nuestra historia.</p>
     </div>
   </section>
 
@@ -310,6 +310,10 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
     <div class="recuerdos-grid">
       <figure class="foto-bodas"><img src="assets/pareja_6.jpeg" alt="José y Noemí celebrando su boda, ella con vestido blanco y él con traje oscuro" loading="lazy"></figure>
     </div>
+  </section>
+
+  <section class="reveal" aria-label="Cierre de la invitación" style="padding-top:18px; padding-bottom:22px; margin-top:14px;">
+    <p style="margin:0; font-size:1.4rem; line-height:1.6; color:var(--ink); text-align:center;">Con amor<br><strong style="font-size:2.6rem; color:var(--gold); font-weight:600; font-family:var(--script); display:block; margin-top:8px; letter-spacing:.02em;">José &amp; Noemí</strong></p>
   </section>
 
   <footer class="site-footer">
@@ -327,23 +331,6 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
   </footer>
 </main>
 
-<dialog id="modal" aria-labelledby="mT">
-  <form method="dialog" id="form" novalidate>
-    <button type="button" class="x" id="cerrar" aria-label="Cerrar">×</button>
-    <h2 id="mT">Confirmar asistencia</h2>
-    <p class="eyebrow" id="mInv"></p>
-    <label for="asis">Número de asistentes</label>
-    <select id="asis"></select>
-    <label for="nota">Mensaje (opcional)</label>
-    <textarea id="nota" rows="3" maxlength="300" placeholder="Unas palabras para los festejados"></textarea>
-    <p class="estado" id="mEstado" role="alert"></p>
-    <div class="acciones">
-      <button type="button" class="btn" id="si">Confirmo mi asistencia</button>
-      <button type="button" class="btn sec" id="no">No podré asistir</button>
-    </div>
-  </form>
-</dialog>
-
 <script>
 /* ===== CONFIGURACIÓN (edita aquí) ===== */
 const EVENTO={
@@ -354,13 +341,15 @@ const EVENTO={
   whatsapp:"5210000000000"
 };
 const RSVP_URL="https://script.google.com/macros/s/AKfycbyyjNp0wg1rtRFOgCwZpf6X9iF_rYku1c2zW-b_RzCx7gL20cN6mAJl2d_z7tyVBPtH/exec";
-const FRASE="Padre Celestial, tu gracia nos unió hace 50 años y tu fidelidad nos ha dado alegrías, nos ha acompañado en la tristeza y en los momentos difíciles, y ha mantenido encendida la luz y la llama de nuestro amor. Somos la pareja de oro. Gracias a ti, Dios Padre.";
+const FRASE="Padre celestial, tu gracia nos unió hace 50 años y tu fidelidad nos ha dado alegrías, fortaleza en los momentos difíciles y ha mantenido viva la llama de nuestro amor. Somos una pareja de oro. Gracias a ti, Dios Padre.";
 const PADRINOS=[
-  "Arteh Gama Fuentes",
-  "Javier Gama Fuentes",
-  "Esaú Gama Fuentes",
-  "Brenda [apellido]",
-  "César Gama Martínez",
+  "Arlett Gaona Fuentes",
+  "Javier Gaona Fuentes",
+  "Mariana Zamora Olivo",
+  "Esaú Gaona Fuentes",
+  "Brenda Pineda Flores",
+  "Padrinos de anillos: César Martínez Gaona",
+  "Angélica Jovanella Díaz López",
 ];
 // Demo local: abre con ?boleto=DEMO1 (en producción esto vendría de Firebase)
 const BOLETOS={DEMO1:{name:"Familia Pérez",passes:4},DEMO2:{name:"Sra. María López",passes:2}};
@@ -375,7 +364,6 @@ $("#lugar").textContent=EVENTO.lugar;$("#dir").textContent=EVENTO.direccion;
 $("#hCer").textContent=EVENTO.hCer;
 if(EVENTO.hRec){$("#hRec").textContent=EVENTO.hRec}else{$("#horarioRec").hidden=true;$("#horarios").classList.add("una-hora")}
 $("#mapa").href=EVENTO.mapa;
-$("#limite").textContent=EVENTO.limite;
 PADRINOS.forEach(nombre=>{
   const p=document.createElement("p");p.textContent=nombre;
   $("#padrinos").appendChild(p);
@@ -411,51 +399,6 @@ const id=(new URLSearchParams(location.search).get("boleto")||"").toUpperCase();
 const inv=BOLETOS[id]||null;
 if(inv){$("#invitado").hidden=false;$("#invNombre").textContent=inv.name}
 
-// Modal
-const modal=$("#modal");
-$("#btnConf").addEventListener("click",()=>{
-  if(!id){
-    const estado=$("#estado");estado.className="estado err";
-    estado.textContent="Para confirmar, abre la invitación con el código personal incluido en tu enlace.";
-    return;
-  }
-  const max=inv?inv.passes:6;const sel=$("#asis");sel.innerHTML="";
-  for(let i=1;i<=max;i++){const o=document.createElement("option");o.value=i;o.textContent=i+(i>1?" personas":" persona");sel.appendChild(o)}
-  $("#mInv").textContent=inv?inv.name+" · "+inv.passes+(inv.passes>1?" pases":" pase"):"";
-  $("#mEstado").textContent="";modal.showModal();
-});
-$("#cerrar").addEventListener("click",()=>modal.close());
-modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});
-async function enviar(va){
-  if(!id){
-    $("#mEstado").className="estado err";
-    $("#mEstado").textContent="No encontramos el código de invitación en este enlace.";
-    return;
-  }
-  const n=va?+$("#asis").value:0,nota=$("#nota").value.trim();
-  const botones=[$("#si"),$("#no"),$("#cerrar")];
-  botones.forEach(b=>b.disabled=true);
-  $("#mEstado").className="estado";
-  $("#mEstado").textContent="Enviando respuesta…";
-  try{
-    await fetch(RSVP_URL,{
-      method:"POST",
-      mode:"no-cors",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body:JSON.stringify({codigo:id,asiste:va,asistentes:n,mensaje:nota})
-    });
-    $("#mEstado").className="estado";
-    $("#mEstado").textContent="Solicitud enviada. No podemos verificar desde aquí si quedó registrada; si tienes dudas, contacta a los anfitriones.";
-  }catch(error){
-    console.error("No se pudo enviar la confirmación.",error);
-    $("#mEstado").className="estado err";
-    $("#mEstado").textContent="No se pudo enviar la respuesta. Revisa tu conexión e inténtalo de nuevo.";
-  }finally{
-    botones.forEach(b=>b.disabled=false);
-  }
-}
-$("#si").addEventListener("click",()=>enviar(true));
-$("#no").addEventListener("click",()=>enviar(false));
 </script>
 </body>
 </html>
