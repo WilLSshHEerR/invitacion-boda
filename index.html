@@ -194,7 +194,7 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 
   <!-- HERO -->
   <section class="hero reveal">
-    <div class="marco"><div class="marco-in"><img src="assets/pareja_3.jpeg" alt="José y Noemí sentados juntos en un campo de flores al atardecer" id="foto"><span id="fotoTxt">Foto de la pareja</span></div></div>
+    <div class="marco"><div class="marco-in"><img src="assets/pareja_3.jpeg" alt="José y Noemí sentados juntos en un campo de flores al atardecer" id="foto"></div></div>
     <div class="mono" aria-hidden="true"></div>
     <p class="eyebrow" style="margin-top:50px">50 aniversario</p>
     <h1 class="gold-text">José &amp; Noemí</h1>
@@ -322,7 +322,7 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
           <p>Ideas que cobran vida, código que no se detiene.</p>
         </div>
       </div>
-      <p class="footer-copy">© <span id="current-year"></span> DN Craft &amp; Loop · Invitación digital creada para DN Craft &amp; Loopn</p>
+      <p class="footer-copy">© <span id="current-year"></span> DN Craft &amp; Loop · Invitación digital creada para José &amp; Noemí</p>
     </div>
   </footer>
 </main>
@@ -381,7 +381,6 @@ PADRINOS.forEach(nombre=>{
   $("#padrinos").appendChild(p);
 });
 $("#foto").addEventListener("error",e=>e.target.classList.add("img-falta"));
-$("#foto").addEventListener("load",()=>$("#fotoTxt").hidden=true);
 
 // Portada
 $("#sello").addEventListener("click",()=>{
