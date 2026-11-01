@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rouge+Script&family=Syne:wght@400..800&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#faf6ee;--card:#fffdf8;--ink:#3a3226;--soft:#7a6f5e;--gold:#a98a3d;--gold2:#d8bf7a;--deep:#2b2417;--line:rgba(169,138,61,.35);
@@ -16,7 +16,7 @@
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;font-weight:500;line-height:1.6;-webkit-font-smoothing:antialiased;
   background-image:radial-gradient(1200px 600px at 50% -10%,rgba(216,191,122,.22),transparent 60%),url(assets/textura.png);background-size:auto,420px}
 body{overflow-x:hidden}
 body.lock{overflow:hidden}
@@ -107,7 +107,8 @@ section{padding:34px 0;text-align:center}
   .foto-bodas:hover{box-shadow:0 0 0 5px rgba(255,253,248,.8),0 24px 44px -20px rgba(60,45,10,.65)!important}
 }
 .mono{position:relative;z-index:2;width:62px;height:62px;margin:-31px auto 0;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 5px 6px rgba(80,60,10,.35))}
-.hero h1{font-family:'Dancing Script',var(--script);font-weight:600;font-size:clamp(3.4rem,15vw,5rem);line-height:1.15;margin:28px 0 6px}
+.hero h1{font-family:'Rouge Script',var(--script);font-weight:400;font-size:clamp(4rem,17vw,5.6rem);line-height:1.15;margin:28px 0 6px}
+.closing-name{font-family:'Rouge Script',var(--script);font-weight:400}
 .fecha{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:10px;letter-spacing:.3em;text-transform:uppercase;font-size:.85rem}
 .fecha b{font-size:2.6rem;font-weight:500;letter-spacing:0;line-height:1;color:var(--gold)}
 .fecha span{padding:0 4px;border-inline:1px solid var(--line);padding-inline:18px;line-height:1.5}
@@ -228,8 +229,8 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
   <!-- MENSAJE Y FECHA -->
   <section class="reveal evento">
     <div class="card">
-      <h2 class="titulo">Celebramos nuestro aniversario y nos encantaría que nos acompañes a brindar por nuestra historia</h2>
-      <p class="fecha-evento">06 de febrero del 2027</p>
+      <h2 class="titulo">Celebramos nuestro aniversario y nos encantaría que nos acompañaran a brindar por nuestra historia</h2>
+      <p class="fecha-evento">6 de febrero de 2027</p>
     </div>
   </section>
 
@@ -290,7 +291,7 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
     <div class="card">
       <h2 class="titulo">Código de vestimenta</h2>
       <p class="vestimenta-tipo">Formal</p>
-      <p class="vestimenta-nota">Para mantener la armonía de nuestra celebración, agradecemos evitar los tonos gris y azul marino.</p>
+      <p class="vestimenta-nota">Para mantener la armonía de nuestra celebración, agradecemos evitar los tonos grises y azul marino.</p>
     </div>
   </section>
 
@@ -317,7 +318,7 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
   </section>
 
   <section class="reveal" aria-label="Cierre de la invitación" style="padding-top:18px; padding-bottom:22px; margin-top:14px;">
-    <p style="margin:0; font-size:1.4rem; line-height:1.6; color:var(--ink); text-align:center;">Con amor<br><strong style="font-size:2.6rem; color:var(--gold); font-weight:600; font-family:var(--script); display:block; margin-top:8px; letter-spacing:.02em;">José &amp; Noemí</strong></p>
+    <p style="margin:0; font-size:1.4rem; line-height:1.6; color:var(--ink); text-align:center;">Con amor<br><strong class="closing-name" style="font-size:2.6rem; color:var(--gold); font-weight:700; display:block; margin-top:8px; letter-spacing:.02em;">José &amp; Noemí</strong></p>
   </section>
 
   <footer class="site-footer">
@@ -345,7 +346,7 @@ const EVENTO={
   whatsapp:"5210000000000"
 };
 const RSVP_URL="https://script.google.com/macros/s/AKfycbyyjNp0wg1rtRFOgCwZpf6X9iF_rYku1c2zW-b_RzCx7gL20cN6mAJl2d_z7tyVBPtH/exec";
-const FRASE="Padre celestial tu gracia nos unió hace 50 años y tu fidelidad.\n\nNos has dado alegrías compartidas, fortaleza en momentos difíciles y mantener encendida la llama de nuestro amor.\n\nSomos una pareja de oro.\n\nGracias a ti Dios padre.";
+const FRASE="Padre celestial, tu gracia nos unió hace 50 años y tu fidelidad.\n\nNos has dado alegrías compartidas, fortaleza en momentos difíciles y mantener encendida la llama de nuestro amor.\n\nSomos una pareja de oro.\n\nGracias a ti, Dios Padre.";
 const PADRINOS=[
   "Arlett Gaona Fuentes",
   "Javier Gaona Fuentes",
