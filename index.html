@@ -26,28 +26,80 @@ h1,h2,h3,p{margin:0}
 .gold-text{background:linear-gradient(100deg,#8a6d27,#d8bf7a 45%,#a98a3d 70%,#e7d49a);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* ---------- PORTADA ---------- */
-.portada{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fffaf0,#efe1bd);transition:opacity 1s ease,visibility 1s;padding:24px}
+.portada{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fffaf0,#efe1bd);transition:opacity 1s ease,visibility 1s;padding:24px;overflow:hidden}
 .portada.fuera{opacity:0;visibility:hidden}
-.sobre{position:relative;width:min(88vw,420px);aspect-ratio:1.42;perspective:1200px;filter:drop-shadow(0 26px 40px rgba(90,70,20,.35))}
+.eucalipto{position:absolute;z-index:0;width:clamp(112px,19vw,190px);height:auto;pointer-events:none;filter:drop-shadow(0 3px 5px rgba(73,91,67,.12))}
+.eucalipto-sup-izq{left:4%;top:7%;transform:rotate(-8deg)}
+.eucalipto-sup-der{right:4%;top:7%;transform:scaleX(-1) rotate(-8deg)}
+.eucalipto-inf-izq{left:4%;bottom:12%;transform:scaleY(-1) rotate(-8deg)}
+.eucalipto-inf-der{right:4%;bottom:12%;transform:scale(-1) rotate(-8deg)}
+.orquidea-imagen{position:absolute;z-index:0;top:calc(50% - 110px);width:clamp(170px,22vw,220px);height:auto;pointer-events:none;filter:drop-shadow(0 5px 8px rgba(104,75,47,.14))}
+.orquidea-imagen-izq{left:calc(50% - 330px);transform:rotate(-8deg)}
+.orquidea-imagen-der{right:calc(50% - 330px);transform:scaleX(-1) rotate(-8deg)}
+.orquidea-ramillete{position:absolute;z-index:0;top:calc(50% + 105px);width:clamp(170px,22vw,220px);height:auto;pointer-events:none;filter:drop-shadow(0 5px 8px rgba(104,75,47,.12))}
+.orquidea-ramillete-izq{left:calc(50% - 430px);transform:rotate(-7deg)}
+.orquidea-ramillete-der{right:calc(50% - 430px);transform:scaleX(-1) rotate(-7deg)}
+.adorno-repetido{display:none}
+@media(max-width:600px){
+  .eucalipto{width:clamp(140px,40vw,158px)}
+  .eucalipto-sup-izq{left:calc(50% - 190px);top:calc(50% - 305px);transform:rotate(-8deg)}
+  .eucalipto-sup-der{right:calc(50% - 190px);top:calc(50% - 305px);transform:scaleX(-1) rotate(-8deg)}
+  .eucalipto-inf-izq{left:calc(50% - 190px);top:calc(50% + 210px);bottom:auto;transform:scaleY(-1) rotate(-8deg)}
+  .eucalipto-inf-der{right:calc(50% - 190px);top:calc(50% + 210px);bottom:auto;transform:scale(-1) rotate(-8deg)}
+  .orquidea-imagen{top:calc(50% - 285px);width:clamp(140px,38vw,155px)}
+  .orquidea-imagen-izq{left:calc(50% - 200px);transform:rotate(-8deg)}
+  .orquidea-imagen-der{right:calc(50% - 200px);transform:scaleX(-1) rotate(-8deg)}
+  .orquidea-ramillete{top:calc(50% + 230px);width:clamp(170px,48vw,195px)}
+  .orquidea-ramillete-izq{left:2%;transform:rotate(-7deg)}
+  .orquidea-ramillete-der{right:2%;transform:scaleX(-1) rotate(-7deg)}
+  .adorno-repetido{display:block;width:clamp(130px,38vw,148px)}
+  .eucalipto-repetido-izq{left:calc(50% - 190px);top:calc(50% + 125px);transform:rotate(-8deg)}
+  .eucalipto-repetido-der{right:calc(50% - 190px);top:calc(50% + 125px);transform:scaleX(-1) rotate(-8deg)}
+  .orquidea-repetida-izq{left:calc(50% - 195px);top:calc(50% + 125px);transform:rotate(-8deg)}
+  .orquidea-repetida-der{right:calc(50% - 195px);top:calc(50% + 125px);transform:scaleX(-1) rotate(-8deg)}
+}
+@media(max-width:600px) and (max-height:700px){
+  .eucalipto-sup-izq,.eucalipto-sup-der{top:calc(50% - 250px)}
+  .orquidea-imagen{top:calc(50% - 220px)}
+  .orquidea-ramillete{top:calc(50% + 145px);width:clamp(145px,42vw,165px)}
+  .eucalipto-inf-izq,.eucalipto-inf-der{top:calc(50% + 155px)}
+  .eucalipto-repetido-izq,.eucalipto-repetido-der,
+  .orquidea-repetida-izq,.orquidea-repetida-der{top:calc(50% + 100px)}
+  .adorno-repetido{width:clamp(110px,32vw,125px)}
+}
+@media(max-width:600px) and (max-height:620px){
+  .eucalipto-inf-izq,.eucalipto-inf-der{top:calc(50% + 145px);width:clamp(110px,30vw,118px)}
+  .orquidea-ramillete{display:none}
+  .adorno-repetido{width:clamp(110px,30vw,118px)}
+  .eucalipto-repetido-izq,.eucalipto-repetido-der,
+  .orquidea-repetida-izq,.orquidea-repetida-der{top:calc(50% + 125px)}
+}
+.sobre{position:relative;z-index:1;width:min(88vw,420px);aspect-ratio:1.42;perspective:1200px;filter:drop-shadow(0 26px 40px rgba(90,70,20,.35))}
 .s-cuerpo,.s-frente{position:absolute;inset:0;border-radius:4px}
-.s-cuerpo{z-index:0;background:linear-gradient(145deg,#fffefa,#f7f0df);border:1px solid rgba(169,138,61,.65)}
+.s-cuerpo{z-index:0;background:linear-gradient(145deg,rgba(255,254,250,.76),rgba(247,240,223,.8)),url(assets/textura.png) center/420px;border:1px solid rgba(169,138,61,.65)}
 .s-cuerpo::after{content:"";position:absolute;inset:8px;border:1px solid rgba(169,138,61,.28);pointer-events:none}
-.s-tarjeta{position:absolute;left:7%;right:7%;top:8%;bottom:6%;z-index:1;background:var(--card) url(assets/textura.png) center/420px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform 1.1s .5s cubic-bezier(.2,.7,.2,1),z-index 0s .9s;color:#3a3226}
+.s-tarjeta{position:absolute;left:7%;right:7%;top:8%;bottom:6%;z-index:1;background:var(--card) url(assets/textura.png) center/420px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform 1.1s .5s cubic-bezier(.2,.7,.2,1),z-index 0s .9s;color:#3a3226;overflow:hidden}
 .s-tarjeta .script{font-size:2.6rem;line-height:1}
 .s-tarjeta small{letter-spacing:.35em;text-transform:uppercase;font-size:.7rem;color:#7a6f5e}
-.s-frente{z-index:2;background:linear-gradient(135deg,#fffdf8 0 50%,transparent 50%),linear-gradient(225deg,#f8f3e8 0 50%,transparent 50%),linear-gradient(0deg,#f5efdf 0 55%,transparent 55%);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
-.s-frente::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#f8f3e8 0 52%,transparent 52%);clip-path:polygon(0 100%,50% 40%,100% 100%)}
-.solapa{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(155deg,#fffefa 5%,#f7f0df 100%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s cubic-bezier(.5,0,.2,1);z-index:3;border-radius:4px 4px 0 0}
+.tarjeta-anillos{position:absolute;top:5%;left:50%;display:block;width:clamp(88px,28%,120px);height:auto;transform:translateX(-50%);filter:drop-shadow(0 2px 2px rgba(90,65,28,.16))}
+.s-frente{z-index:2;background:repeating-linear-gradient(135deg,#b78877 0 5px,#faf7ee 5px 10px,#ad985e 10px 13px,#faf7ee 13px 18px);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+.s-frente::before{content:"";position:absolute;inset:6px;background:linear-gradient(135deg,#f3e6cf 0 50%,transparent 50%),linear-gradient(225deg,#ebdaba 0 50%,transparent 50%),linear-gradient(0deg,rgba(234,218,190,.94) 0 55%,transparent 55%),url(assets/textura.png) center/420px;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+.s-frente::after{content:"";position:absolute;inset:6px;background:linear-gradient(to top,rgba(234,218,190,.93) 0 52%,transparent 52%),url(assets/textura.png) center/420px;clip-path:polygon(0 100%,50% 40%,100% 100%)}
+.sobre-detalle{position:absolute;inset:0;width:100%;height:100%;z-index:3;overflow:visible;pointer-events:none;transition:opacity .5s}
+.cordel-sombra,.cordel,.cordel-luz{vector-effect:non-scaling-stroke}
+.cordel-sombra{fill:none;stroke:#85714b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.cordel{fill:none;stroke:#b79a61;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round}
+.cordel-luz{fill:none;stroke:#fff9e9;stroke-width:1.1;stroke-linecap:round;stroke-dasharray:2 4;opacity:.9}
+.solapa{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(155deg,rgba(249,241,225,.94) 5%,rgba(235,220,192,.94) 100%),url(assets/textura.png) center/420px;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s cubic-bezier(.5,0,.2,1);z-index:3;border-radius:4px 4px 0 0}
 .sello{position:absolute;left:50%;top:50%;z-index:4;width:74px;height:74px;margin:-37px 0 0 -37px;border:0;cursor:pointer;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 6px 7px rgba(0,0,0,.32));transition:transform .3s,opacity .5s}
 .sello:hover{transform:scale(1.06)}
 .sello:focus-visible{outline:2px solid #fff;outline-offset:4px}
 .sobre.abierto .solapa{transform:rotateX(180deg);z-index:0}
+.sobre.abierto .sobre-detalle{opacity:0}
 .sobre.abierto .sello{opacity:0;pointer-events:none}
 .sobre.abierto .s-tarjeta{z-index:3;transform:translateY(-34%) scale(1.04)}
-.p-texto{position:absolute;bottom:calc(36px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#8a6d27;letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;animation:pulso 2.4s infinite}
+.p-texto{position:absolute;z-index:2;bottom:calc(36px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#8a6d27;letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;animation:pulso 2.4s infinite}
 @keyframes pulso{50%{opacity:.35}}
-@keyframes halo-dorado{50%{opacity:.48;transform:scale(1.012)}}
-@keyframes recuerdo-vivo{to{transform:scale(1.09)}}
 @keyframes entra-recuerdo-oceano{from{opacity:0;transform:translateX(-28px) scale(.96)}to{opacity:1;transform:scale(1)}}
 @keyframes entra-recuerdo-pradera{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:scale(1)}}
 @keyframes entra-recuerdo-cerezos{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
@@ -66,18 +118,30 @@ section{padding:34px 0;text-align:center}
 .orn{display:block;width:150px;height:24px;margin:18px auto;color:var(--gold)}
 
 /* ---------- HERO ---------- */
-.hero{padding-top:52px;position:relative}
-.hero .eyebrow{font-size:1rem}
-.anniversary-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:36px auto 12px;padding:14px 42px;border-radius:999px;background:linear-gradient(135deg,#fff6d8 0%,#f1d582 25%,#c89c40 52%,#f8ebbf 100%);border:1px solid rgba(113,83,24,.45);box-shadow:0 16px 26px -18px rgba(72,54,14,.85),inset 0 2px 0 rgba(255,255,255,.7);overflow:hidden}
+.hero{position:relative;width:min(calc(100vw - 40px),1000px);margin-left:calc(50% - 50vw + 20px);padding:46px 0 56px}
+.hero-stage{position:relative;min-height:clamp(680px,82vw,820px);isolation:isolate}
+.hero-sobre{position:absolute;z-index:1;top:17%;right:9%;width:43%;aspect-ratio:1.42;perspective:1200px;filter:drop-shadow(0 20px 28px rgba(48,38,19,.34))}
+.hero-sobre .sobre-detalle{z-index:4;opacity:1}
+.hero-foliage{position:absolute;z-index:0;width:clamp(130px,24vw,240px);height:auto;opacity:.55;pointer-events:none;filter:sepia(.4) saturate(.72)}
+.hero-foliage-top{top:2%;left:1%;transform:rotate(-14deg)}
+.hero-foliage-card{z-index:4;width:clamp(100px,17vw,170px);left:0;bottom:1%;transform:rotate(12deg);opacity:.28}
+.hero-floral{position:absolute;height:auto;pointer-events:none;user-select:none;filter:drop-shadow(0 8px 12px rgba(67,51,25,.1))}
+.hero-floral-spray{z-index:1;top:23%;left:0;width:clamp(170px,24vw,250px);transform:rotate(-12deg)}
+.hero-floral-orchid{z-index:2;top:5%;right:18%;width:clamp(92px,14vw,145px);transform:rotate(12deg)}
+.hero-floral-eucalyptus{z-index:0;top:12%;right:0;width:clamp(100px,16vw,160px);transform:rotate(8deg);opacity:.76}
+.hero-floral-base{z-index:2;bottom:3%;left:0;width:clamp(160px,27vw,280px);transform:rotate(5deg)}
+.hero-floral-tail{z-index:1;right:0;bottom:4%;width:clamp(130px,21vw,220px);transform:rotate(-14deg);opacity:.84}
+.hero-photo{position:absolute;z-index:2;top:36%;left:calc(69.5% - 42%);width:42%;aspect-ratio:1.3;margin:0;padding:7px;background:#fffdf8;border:1px solid rgba(169,138,61,.58);box-shadow:0 22px 48px -24px rgba(54,41,20,.62)}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero-seal{position:absolute;z-index:5;top:calc(36% - clamp(33px,4vw,44px));left:calc(69.5% - clamp(33px,4vw,44px));width:clamp(66px,8vw,88px);aspect-ratio:1;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 5px 7px rgba(46,34,14,.42));pointer-events:none}
+.hero-card{position:absolute;z-index:3;top:49%;right:6%;width:43%;min-height:310px;padding:24px clamp(18px,3vw,34px) 30px;background:rgba(255,253,248,.97) url(assets/textura.png) center/420px;border:1px solid rgba(169,138,61,.28);box-shadow:0 24px 48px -24px rgba(54,41,20,.56);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(169,138,61,.2);pointer-events:none}
+.hero-card-kicker{position:relative;color:#44371e;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700}
+.anniversary-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:13px auto 10px;padding:10px 38px;border-radius:999px;background:linear-gradient(135deg,#fff6d8 0%,#f1d582 25%,#c89c40 52%,#f8ebbf 100%);border:1px solid rgba(113,83,24,.45);box-shadow:0 12px 22px -17px rgba(72,54,14,.85),inset 0 2px 0 rgba(255,255,255,.7);overflow:hidden}
 .anniversary-badge::before,.anniversary-badge::after{content:"✦";position:absolute;top:50%;transform:translateY(-50%);font-size:1.45rem;color:rgba(85,61,7,.7)}
 .anniversary-badge::before{left:16px}.anniversary-badge::after{right:16px}
-.anniversary-badge span{display:block;padding:0 10px;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#2b1f09;text-shadow:0 1px 0 rgba(255,255,255,.52)}
-.marco{position:relative;width:min(78%,330px);margin:0 auto 6px;aspect-ratio:4/5;border-radius:999px 999px 6px 6px;padding:10px;border:1px solid var(--gold2);box-shadow:0 0 0 7px rgba(255,253,248,.62),0 18px 42px -24px rgba(80,60,10,.5)}
-.marco::before{content:"";position:absolute;inset:-7px;border:1px solid rgba(216,191,122,.45);border-radius:inherit;pointer-events:none;animation:halo-dorado 5s ease-in-out infinite}
-.marco-in{width:100%;height:100%;border-radius:999px 999px 2px 2px;overflow:hidden;background:linear-gradient(160deg,#eadcb6,#c9ad63);display:grid;place-items:center;text-align:center;color:#fff8e2;font-size:.9rem;letter-spacing:.08em}
-.marco-in img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
-.hero.visible .marco-in img{animation:recuerdo-vivo 18s ease-in-out infinite alternate}
-.marco-in img.img-falta{display:none}
+.anniversary-badge span{display:block;padding:0 8px;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#2b1f09;text-shadow:0 1px 0 rgba(255,255,255,.52);white-space:nowrap}
+.hero-card-date{position:relative;margin-top:18px;padding-top:14px;border-top:1px solid rgba(169,138,61,.42);color:#403725;font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
 .recuerdos{padding-top:10px}
 .recuerdos .titulo{margin-bottom:18px}
 .recuerdos-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:520px;margin:0 auto}
@@ -106,19 +170,48 @@ section{padding:34px 0;text-align:center}
   .foto-atardecer:hover{box-shadow:0 24px 44px -18px rgba(35,21,17,.72)!important}
   .foto-bodas:hover{box-shadow:0 0 0 5px rgba(255,253,248,.8),0 24px 44px -20px rgba(60,45,10,.65)!important}
 }
-.mono{position:relative;z-index:2;width:62px;height:62px;margin:-31px auto 0;background:url(assets/sello.png) center/260% no-repeat;filter:drop-shadow(0 5px 6px rgba(80,60,10,.35))}
-.hero h1{font-family:'Rouge Script',var(--script);font-weight:400;font-size:clamp(4rem,17vw,5.6rem);line-height:1.15;margin:28px 0 6px}
+.hero h1{position:relative;font-family:'Rouge Script',var(--script);font-weight:400;font-size:clamp(3rem,4.8vw,4.5rem);line-height:.98;margin:13px 0 0;color:#17130d;white-space:nowrap}
 .closing-name{font-family:'Rouge Script',var(--script);font-weight:400}
 .fecha{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:10px;letter-spacing:.3em;text-transform:uppercase;font-size:.85rem}
 .fecha b{font-size:2.6rem;font-weight:500;letter-spacing:0;line-height:1;color:var(--gold)}
 .fecha span{padding:0 4px;border-inline:1px solid var(--line);padding-inline:18px;line-height:1.5}
 .invitado{margin-top:22px;font-style:italic;color:var(--soft)}
 .invitado b{display:block;font-style:normal;font-weight:600;font-size:1.35rem;color:var(--ink);letter-spacing:.04em}
+@media(max-width:600px){
+  .hero{width:calc(100vw - 28px);margin-left:calc(50% - 50vw + 14px);padding:24px 0 34px}
+  .hero-stage{min-height:clamp(690px,195vw,790px)}
+  .hero-sobre{top:19%;right:2%;width:72%}
+  .hero-foliage{width:clamp(130px,42vw,170px)}
+  .hero-foliage-top{top:2.5%;left:1%;transform:rotate(-12deg)}
+  .hero-foliage-card{width:clamp(92px,28vw,118px);left:0;bottom:0}
+  .hero-floral-spray{top:23%;width:clamp(130px,43vw,175px);transform:rotate(-10deg)}
+  .hero-floral-orchid{top:7%;right:18%;width:clamp(78px,27vw,110px)}
+  .hero-floral-eucalyptus{top:12%;right:0;width:clamp(84px,27vw,112px)}
+  .hero-floral-base{bottom:2%;width:clamp(130px,44vw,175px)}
+  .hero-floral-tail{right:0;bottom:2%;width:clamp(105px,35vw,145px)}
+  .hero-photo{top:31%;left:1%;width:61%;aspect-ratio:1.3;padding:6px}
+  .hero-photo img{object-position:center 24%}
+  .hero-seal{top:calc(31% - 34px);left:calc(62% - 34px);width:68px}
+  .hero-card{top:52%;right:2%;width:77%;min-height:clamp(280px,76vw,310px);padding:22px 20px 26px}
+  .hero-card-kicker{font-size:.7rem;letter-spacing:.22em}
+  .anniversary-badge{margin:12px auto 8px;padding:9px 34px}
+  .anniversary-badge span{padding:0 4px;font-size:.78rem;letter-spacing:.08em}
+  .anniversary-badge::before,.anniversary-badge::after{font-size:1.1rem}
+  .anniversary-badge::before{left:12px}.anniversary-badge::after{right:12px}
+  .hero h1{font-size:clamp(3.3rem,13vw,4.7rem);white-space:nowrap}
+  .hero-card-date{margin-top:15px;padding-top:12px;font-size:.72rem;letter-spacing:.12em}
+}
+@media(max-width:360px){
+  .hero-stage{min-height:710px}
+  .hero-card{width:81%;right:1%;padding-inline:15px}
+  .hero h1{font-size:clamp(2.55rem,12vw,3rem)}
+  .hero-seal{top:calc(31% - 30px);left:calc(62% - 30px);width:60px}
+}
 
 /* ---------- SECCIONES ---------- */
 .titulo{font-family:var(--script);font-size:clamp(2.6rem,10vw,3.4rem);font-weight:400;line-height:1.1;margin-bottom:10px;color:var(--gold)}
 .evento .titulo{font-size:clamp(1.8rem,7vw,2.4rem);line-height:1.2}
-.fecha-evento{margin-top:16px;color:#8a6d27;font-size:clamp(1.35rem,5vw,1.65rem);font-weight:700;letter-spacing:.08em}
+.fecha-evento{margin-top:16px;color:#000;font-size:clamp(1.35rem,5vw,1.65rem);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
 .frase{font-size:1.3rem;font-style:italic;line-height:1.75}
 #frase{white-space:pre-line}
 .frase::before{content:"“";display:block;font:4rem/0.6 var(--serif);color:#d8bf7a;margin-bottom:10px}
@@ -143,8 +236,9 @@ section{padding:34px 0;text-align:center}
 .evento.visible .card>*:nth-child(5){transition-delay:.32s}
 .evento.visible .card>*:nth-child(6){transition-delay:.4s}
 .evento.visible .card>*:nth-child(7){transition-delay:.48s}
-.icons{display:flex;justify-content:center;gap:26px;color:var(--gold);margin-bottom:6px}
+.icons{display:flex;align-items:center;justify-content:center;gap:26px;color:var(--gold);margin-bottom:6px}
 .icons svg{width:54px;height:54px}
+.icons img{width:76px;height:76px;object-fit:cover}
 .btn{display:inline-block;cursor:pointer;font:600 .8rem var(--serif);letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:#fffaf0;background:linear-gradient(135deg,#8a6d27,#b99a4a 50%,#8a6d27);border:0;padding:15px 30px;border-radius:2px;box-shadow:0 8px 18px -8px rgba(110,85,25,.7);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -204,11 +298,33 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 
 <!-- PORTADA -->
 <div class="portada" id="portada">
+  <img class="eucalipto eucalipto-sup-izq" src="assets/eucalipto/1.png" alt="" aria-hidden="true">
+  <img class="eucalipto eucalipto-sup-der" src="assets/eucalipto/2.png" alt="" aria-hidden="true">
+  <img class="eucalipto eucalipto-inf-izq" src="assets/eucalipto/3.png" alt="" aria-hidden="true">
+  <img class="eucalipto eucalipto-inf-der" src="assets/eucalipto/4.png" alt="" aria-hidden="true">
+  <img class="orquidea-imagen orquidea-imagen-izq" src="assets/orquideas/1.png" alt="" aria-hidden="true">
+  <img class="orquidea-imagen orquidea-imagen-der" src="assets/orquideas/4.png" alt="" aria-hidden="true">
+  <img class="orquidea-ramillete orquidea-ramillete-izq" src="assets/orquideas/2.png" alt="" aria-hidden="true">
+  <img class="orquidea-ramillete orquidea-ramillete-der" src="assets/orquideas/3.png" alt="" aria-hidden="true">
+  <img class="eucalipto adorno-repetido eucalipto-repetido-izq" src="assets/eucalipto/1.png" alt="" aria-hidden="true">
+  <img class="eucalipto adorno-repetido eucalipto-repetido-der" src="assets/eucalipto/2.png" alt="" aria-hidden="true">
+  <img class="orquidea-imagen adorno-repetido orquidea-repetida-izq" src="assets/orquideas/1.png" alt="" aria-hidden="true">
+  <img class="orquidea-imagen adorno-repetido orquidea-repetida-der" src="assets/orquideas/4.png" alt="" aria-hidden="true">
   <div class="sobre" id="sobre">
     <div class="s-cuerpo"></div>
-    <div class="s-tarjeta"><p class="script">Bodas de Oro</p><small>José &amp; Noemí</small></div>
+    <div class="s-tarjeta">
+      <img class="tarjeta-anillos" src="assets/anillos.png" alt="Anillos de boda dorados entrelazados">
+      <p class="script">Bodas de Oro</p><small>José &amp; Noemí</small>
+    </div>
     <div class="s-frente"></div>
     <div class="solapa"></div>
+    <svg class="sobre-detalle" viewBox="0 0 420 296" aria-hidden="true">
+        <g>
+          <path class="cordel-sombra" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+          <path class="cordel" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+          <path class="cordel-luz" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+        </g>
+    </svg>
     <button class="sello" id="sello" type="button" aria-label="Abrir invitación"></button>
   </div>
   <p class="p-texto">Toca el sello para abrir</p>
@@ -218,11 +334,36 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 
   <!-- HERO -->
   <section class="hero reveal">
-    <div class="marco"><div class="marco-in"><img src="assets/pareja_1.jpeg" alt="José y Noemí sentados juntos en un campo de flores al atardecer" id="foto"></div></div>
-    <div class="mono" aria-hidden="true"></div>
-    <div class="anniversary-badge" aria-label="50 aniversario"><span>50 aniversario</span></div>
-    <h1 class="gold-text">José &amp; Noemí</h1>
-    <p class="invitado" id="invitado" hidden>Invitación para<b id="invNombre"></b></p>
+    <div class="hero-stage">
+      <div class="sobre abierto hero-sobre" aria-hidden="true">
+        <div class="s-cuerpo"></div>
+        <div class="s-frente"></div>
+        <div class="solapa"></div>
+        <svg class="sobre-detalle" viewBox="0 0 420 296">
+          <path class="cordel-sombra" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+          <path class="cordel" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+          <path class="cordel-luz" d="M210 2V294M2 148H418M210 148C190 124 157 112 151 132c-6 18 25 24 57 16-21 7-45 26-31 38 13 11 29-8 33-38M210 148c20-24 53-36 59-16 6 18-25 24-57 16 21 7 45 26 31 38-13 11-29-8-33-38M207 153c-6 32-19 63-38 91M213 153c6 32 19 63 38 91"/>
+        </svg>
+      </div>
+      <img class="hero-foliage hero-foliage-top" src="assets/eucalipto/3.png" alt="" aria-hidden="true">
+      <img class="hero-floral hero-floral-spray" src="assets/orquideas/2.png" alt="" aria-hidden="true">
+      <img class="hero-floral hero-floral-orchid" src="assets/orquideas/4.png" alt="" aria-hidden="true">
+      <img class="hero-floral hero-floral-eucalyptus" src="assets/eucalipto/2.png" alt="" aria-hidden="true">
+      <figure class="hero-photo">
+        <img src="assets/pareja_1.jpeg" alt="José y Noemí abrazados junto al mar al atardecer" id="foto">
+      </figure>
+      <div class="hero-seal" aria-hidden="true"></div>
+      <article class="hero-card" aria-label="José y Noemí, bodas de oro">
+        <p class="hero-card-kicker">Una historia de amor</p>
+        <div class="anniversary-badge" aria-label="50 aniversario"><span>50 aniversario</span></div>
+        <h1>José &amp; Noemí</h1>
+        <p class="hero-card-date">6 de febrero de 2027</p>
+      </article>
+      <img class="hero-floral hero-floral-base" src="assets/orquideas/3.png" alt="" aria-hidden="true">
+      <img class="hero-floral hero-floral-tail" src="assets/eucalipto/4.png" alt="" aria-hidden="true">
+      <img class="hero-foliage hero-foliage-card" src="assets/eucalipto/1.png" alt="" aria-hidden="true">
+      <p class="invitado" id="invitado" hidden>Invitación para<b id="invNombre"></b></p>
+    </div>
   </section>
 
     <!-- FRASE -->
@@ -245,7 +386,7 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
   <section class="reveal evento">
     <div class="card">
       <h2 class="titulo">Celebramos nuestro aniversario y nos encantaría que nos acompañaran a brindar por nuestra historia</h2>
-      <p class="fecha-evento">6 de febrero de 2027</p>
+      <p class="fecha-evento">06 de febrero de 2027</p>
     </div>
   </section>
 
@@ -268,8 +409,8 @@ select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
   <section class="reveal evento">
     <div class="card">
       <div class="icons">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4v10M27 8h10M32 14l-10 10v34h20V24zM22 34H8v24h14M42 34h14v24H42M27 58V46a5 5 0 0110 0v12"/></g></svg>
-        <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h18l-2 14a7 7 0 01-14 0zM19 35v18M12 54h14M36 14h18l-2 14a7 7 0 01-14 0zM45 35v18M38 54h14M32 4v4M24 6l1 3M40 6l-1 3"/></g></svg>
+        <img src="assets/iglesia.png" alt="Iglesia dorada">
+        <img src="assets/copas.png" alt="Copas de brindis doradas">
       </div>
       <p class="eyebrow">Ceremonia y recepción</p>
       <p class="lugar" id="lugar"></p>
