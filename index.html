@@ -80,7 +80,7 @@ h1,h2,h3,p{margin:0}
 .s-cuerpo::after{content:"";position:absolute;inset:8px;border:1px solid rgba(169,138,61,.28);pointer-events:none}
 .s-tarjeta{position:absolute;left:7%;right:7%;top:8%;bottom:6%;z-index:1;background:var(--card) url(assets/textura.png) center/420px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform 1.1s .5s cubic-bezier(.2,.7,.2,1),z-index 0s .9s;color:#3a3226;overflow:hidden}
 .s-tarjeta .script{font-size:2.6rem;line-height:1}
-.s-tarjeta small{letter-spacing:.35em;text-transform:uppercase;font-size:.7rem;color:#7a6f5e}
+.s-tarjeta small{letter-spacing:.25em;text-transform:uppercase;font-size:.82rem;font-weight:700;color:#000}
 .tarjeta-anillos{position:absolute;top:5%;left:50%;display:block;width:clamp(88px,28%,120px);height:auto;transform:translateX(-50%);filter:drop-shadow(0 2px 2px rgba(90,65,28,.16))}
 .s-frente{z-index:2;background:repeating-linear-gradient(135deg,#b78877 0 5px,#faf7ee 5px 10px,#ad985e 10px 13px,#faf7ee 13px 18px);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
 .s-frente::before{content:"";position:absolute;inset:6px;background:linear-gradient(135deg,#f3e6cf 0 50%,transparent 50%),linear-gradient(225deg,#ebdaba 0 50%,transparent 50%),linear-gradient(0deg,rgba(234,218,190,.94) 0 55%,transparent 55%),url(assets/textura.png) center/420px;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
@@ -238,7 +238,7 @@ section{padding:34px 0;text-align:center}
 .evento.visible .card>*:nth-child(7){transition-delay:.48s}
 .icons{display:flex;align-items:center;justify-content:center;gap:26px;color:var(--gold);margin-bottom:6px}
 .icons svg{width:54px;height:54px}
-.icons img{width:76px;height:76px;object-fit:cover}
+.icons img{width:108px;height:108px;object-fit:cover;filter:saturate(1.6) contrast(1.10) drop-shadow(0 6px 6px rgba(67,51,25,.2))}
 .btn{display:inline-block;cursor:pointer;font:600 .8rem var(--serif);letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:#fffaf0;background:linear-gradient(135deg,#8a6d27,#b99a4a 50%,#8a6d27);border:0;padding:15px 30px;border-radius:2px;box-shadow:0 8px 18px -8px rgba(110,85,25,.7);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -525,7 +525,7 @@ const EVENTO={
 const RSVP_URL="https://script.google.com/macros/s/AKfycbw6zl_8C6753wMopa0DpFn6I3BMvShvL5229mb7y4fDBEqw6O5Omn1sPkfususfHUeq/exec";
 const FRASE="Padre celestial, tu gracia nos unió hace 50 años y tu fidelidad.\n\nNos has dado alegrías compartidas, fortaleza en momentos difíciles y mantener encendida la llama de nuestro amor.\n\nSomos una pareja de oro.\n\nGracias a ti, Dios Padre.";
 const PADRINOS=[
-  "Arlett Gaona Fuentes",
+  "Arleth Gaona Fuentes",
   "Javier Gaona Fuentes",
   "Mariana Zamora Olivo",
   "Esaú Gaona Fuentes",
